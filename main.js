@@ -15,27 +15,40 @@ function noteSubmit(event) {
   console.log('Save button was pressed!')
 }
 
-// GENERAL FUNCTIONS
-function main() {
-}
-
-function printNoteToPage (dbObject) {
-  let note = dbObject
-  notesList.innerHTML += `ID: ${note.id} <br> Title: ${note.title} <br> Body: ${note.body} <hr> <button>Delete</button><button>Edit</button><br><br><br>`
-}
-
 // CRUD FUNCTIONS =================================
 // Create
+function createNote (titleText, bodyText) {
+  fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      title: titleText,
+      body: bodyText,
+    }),
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    // Do work
+  })
+}
+/**
+ * This function will take 2 text inputs for the Note title
+ * and description and then create a new database object
+ */
+function postRequest (titleText, bodyText) {
+  method: 'POST',
+  headers: {'Content-Type': 'applcation/json'},
+  body: JSON.stringify({
+    title: 
+  })
+}
+
 // Read
 function getNotes () {
-  console.log('Get notes function was called.');
   fetch(url)
   .then ((response) => response.json())
   .then ((data)=> {
-    console.log('The data retrieve from db was: ', data);
     for (let i of data) {
-      console.log(i)
-      console.log(typeof i)
       printNoteToPage(i)
     }
   })
@@ -45,6 +58,15 @@ function getNotes () {
 
 // DOM FUNCTIONS ==================================
 
+
+// GENERAL FUNCTIONS
+function main() {
+}
+
+function printNoteToPage (dbObject) {
+  let note = dbObject
+  notesList.innerHTML += `ID: ${note.id} <br> Title: ${note.title} <br> Body: ${note.body} <hr> <button>Delete</button><button>Edit</button><br><br><br>`
+}
 
 // CALL MAIN FUNCTION =============================
 getNotes()
