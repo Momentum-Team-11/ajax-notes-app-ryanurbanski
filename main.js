@@ -3,6 +3,7 @@ console.log('javascript connected.')
 // GLOBAL VARIABLES ===============================
 const url = "http://localhost:3000/notes"
 const form = document.getElementById('notes-form')
+const notesList = document.getElementById('notes-list')
 
 // EVENT LISTENERS ================================
 form.addEventListener('submit', noteSubmit)
@@ -16,7 +17,11 @@ function noteSubmit(event) {
 
 // GENERAL FUNCTIONS
 function main() {
-  
+}
+
+function printNoteToPage (dbObject) {
+  let note = dbObject
+  notesList.innerHTML += `ID: ${note.id} <br> Title: ${note.title} <br> Body: ${note.body} <hr> <button>Delete</button><button>Edit</button><br><br><br>`
 }
 
 // CRUD FUNCTIONS =================================
@@ -28,6 +33,11 @@ function getNotes () {
   .then ((response) => response.json())
   .then ((data)=> {
     console.log('The data retrieve from db was: ', data);
+    for (let i of data) {
+      console.log(i)
+      console.log(typeof i)
+      printNoteToPage(i)
+    }
   })
 }
 // Update
