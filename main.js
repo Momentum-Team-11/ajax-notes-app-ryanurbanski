@@ -14,10 +14,22 @@ function noteSubmit(event) {
   console.log('Save button was pressed!')
 }
 
+// GENERAL FUNCTIONS
+function main() {
+  
+}
 
 // CRUD FUNCTIONS =================================
 // Create
 // Read
+function getNotes () {
+  console.log('Get notes function was called.');
+  fetch(url)
+  .then ((response) => response.json())
+  .then ((data)=> {
+    console.log('The data retrieve from db was: ', data);
+  })
+}
 // Update
 // Delete
 
@@ -25,3 +37,5 @@ function noteSubmit(event) {
 
 
 // CALL MAIN FUNCTION =============================
+getNotes()
+main()
