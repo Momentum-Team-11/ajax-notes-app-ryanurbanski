@@ -9,8 +9,7 @@ POST http://localhost:3000/notes/ HTTP/1.1
 Content-Type: application/json
 
 {
-  "id": 4,
-  "title": "REST Client Note 2",
-  "body": "This was also created through RestClient but corrected the mistake I made in id3"
+  "id": 6,
+  "body": "Also created with REST client.. removed the title tags since I just need a note"
 }
 

@@ -17,31 +17,32 @@ function noteSubmit(event) {
 
 // CRUD FUNCTIONS =================================
 // Create
-function createNote (titleText, bodyText) {
+function createNote (bodyText) {
   fetch(url, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      title: titleText,
       body: bodyText,
     }),
   })
   .then((response) => response.json())
   .then((data) => {
-    // Do work
+
+    getNotes()
   })
 }
+
 /**
  * This function will take 2 text inputs for the Note title
  * and description and then create a new database object
  */
-function postRequest (titleText, bodyText) {
-  method: 'POST',
-  headers: {'Content-Type': 'applcation/json'},
-  body: JSON.stringify({
-    title: 
-  })
-}
+// function postRequest (titleText, bodyText) {
+//   method: 'POST',
+//   headers: {'Content-Type': 'applcation/json'},
+//   body: JSON.stringify({
+//     title: 
+//   })
+// }
 
 // Read
 function getNotes () {
@@ -65,7 +66,12 @@ function main() {
 
 function printNoteToPage (dbObject) {
   let note = dbObject
-  notesList.innerHTML += `ID: ${note.id} <br> Title: ${note.title} <br> Body: ${note.body} <hr> <button>Delete</button><button>Edit</button><br><br><br>`
+  notesList.innerHTML += `
+    ID: ${note.id} <br> 
+    Note: ${note.body} <hr>  
+      <button>Delete</button>
+      <button>Edit</button>
+      <br><br><br>`
 }
 
 // CALL MAIN FUNCTION =============================
